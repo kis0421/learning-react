@@ -14,11 +14,11 @@ export default () => {
         <section>
           <div>
             <span>가로</span>
-            <input type="number" name="row" id="inputRow" value={state.row} />
+            <input type="number" name="row" id="inputRow" value={state.row} onChange={(e) => setState({ [e.target.name]: parseInt(e.target.value, 10) })} />
           </div>
           <div>
             <span>세로</span>
-            <input type="number" name="column" id="inputColumn" value={state.column} />
+            <input type="number" name="column" id="inputColumn" value={state.column} onChange={(e) => setState({ [e.target.name]: parseInt(e.target.value, 10) })} />
           </div>
         </section>
         <br />

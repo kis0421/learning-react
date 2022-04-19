@@ -20,7 +20,8 @@
   "homepage": "https://github.com/kis0421/learning-react#readme",
   "dependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-use": "^17.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.5",

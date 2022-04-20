@@ -1,5 +1,6 @@
 import React from "react";
 import { useSetState } from "react-use";
+import pikachu from "../image/pikachu.png";
 
 export default () => {
 
@@ -41,7 +42,7 @@ export default () => {
           .map((_, rowIndex) => <div key={rowIndex}>
             {new Array(state.column)
               .fill(false)
-              .map((_, columnIndex) => <img src="/image/pikachu.png" key={`${rowIndex}${columnIndex}`} />)}
+              .map((_, columnIndex) => <img src={pikachu} key={`${rowIndex}${columnIndex}`} />)}
           </div>)}
       </section>
     </div >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSetState } from "react-use";
 import pikachu from "../image/pikachu.png";
 
@@ -9,17 +9,21 @@ export default () => {
     column: 10,
   })
 
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ [e.target.name]: parseInt(e.target.value, 10) })
+  }, []);
+
   return <>
     <div>
       <header>
         <section>
           <div>
             <span>가로</span>
-            <input type="number" name="row" id="inputRow" value={state.row} onChange={(e) => setState({ [e.target.name]: parseInt(e.target.value, 10) })} />
+            <input type="number" name="row" id="inputRow" value={state.row} onChange={handleChange} />
           </div>
           <div>
             <span>세로</span>
-            <input type="number" name="column" id="inputColumn" value={state.column} onChange={(e) => setState({ [e.target.name]: parseInt(e.target.value, 10) })} />
+            <input type="number" name="column" id="inputColumn" value={state.column} onChange={handleChange} />
           </div>
         </section>
         <br />

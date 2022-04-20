@@ -13,6 +13,14 @@ export default () => {
     setState({ [e.target.name]: parseInt(e.target.value, 10) })
   }, []);
 
+  const buttons = [
+    { title: "가로 + 1", position: "row", fn: () => setState({ row: state.row + 1 }) },
+    { title: "가로 - 1", position: "row", fn: () => setState({ row: state.row - 1 }) },
+    { title: "세로 + 1", position: "column", fn: () => setState({ column: state.column + 1 }) },
+    { title: "세로 - 1", position: "column", fn: () => setState({ column: state.column - 1 }) },
+    { title: "가로 * 2", position: "column", fn: () => setState({ row: state.row * 2 }) },
+    { title: "세로 * 2", position: "column", fn: () => setState({ column: state.column * 2 }) },
+  ]
   return <>
     <div>
       <header>
@@ -28,14 +36,9 @@ export default () => {
         </section>
         <br />
         <div>
-          <button onClick={() => setState({ row: state.row + 1 })}>가로 + 1</button>
-          <button onClick={() => setState({ row: state.row - 1 })}>가로 - 1</button>
-
-          <button onClick={() => setState({ column: state.column + 1 })}>세로 + 1</button>
-          <button onClick={() => setState({ column: state.column - 1 })}>세로 - 1</button>
-
-          <button onClick={() => setState({ row: state.row * 2 })}>가로 * 2</button>
-          <button onClick={() => setState({ column: state.column * 2 })}>세로 * 2</button>
+          {buttons.map((button) => <button
+            key={button.title}
+            onClick={button.fn}>{button.title}</button>)}
         </div>
         <br />
       </header >

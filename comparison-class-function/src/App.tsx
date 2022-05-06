@@ -32,6 +32,20 @@ const App = styled.div`
       }
     }
   }
+  > main {
+      background-color: #FEFBE7;
+      height: 500px;
+      > section {
+          height:inherit;
+          overflow-y: auto;
+        > article {
+          border-bottom: 1px solid #dedede;
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
 `;
 
 export default () => {
@@ -43,12 +57,10 @@ export default () => {
       <input type="text" />
       <button> + </button>
     </nav>
-    <main style={{ backgroundColor: "#FEFBE7", height: "500px" }}>
+    <main>
       <section>
-        <article>
-        </article>
+        {new Array(1).fill("").map((i) => <article>끝내주게 일어나기</article>)}
       </section>
     </main>
   </App >
 }
-// display: "flex", justifyContent: "center",

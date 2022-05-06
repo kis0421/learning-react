@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+import Header from "./component/Header";
+import SheduleColumn from "./component/SheduleColumn";
+
 const App = styled.div`
   width: 500px;
   margin: 0 auto;
@@ -50,16 +53,10 @@ const App = styled.div`
 
 export default () => {
   return <App>
-    <header>
-      할 일
-    </header>
-    <nav>
-      <input type="text" />
-      <button> + </button>
-    </nav>
+    <Header />
     <main>
       <section>
-        {new Array(1).fill("").map((i) => <article>끝내주게 일어나기</article>)}
+        {new Array(1).fill("").map((_) => <SheduleColumn title="끝내주게 일어나기" />)}
       </section>
     </main>
   </App >

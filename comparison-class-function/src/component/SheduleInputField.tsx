@@ -1,8 +1,8 @@
 import React from "react";
 
-export default () => {
+export default React.memo(() => {
   return <nav>
     <input type="text" />
     <button> + </button>
   </nav>
-}
+})

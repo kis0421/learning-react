@@ -51,7 +51,7 @@ const App = styled.div`
   }
 `;
 
-export default () => {
+export default React.memo(() => {
   return <App>
     <Header />
     <main>
@@ -60,4 +60,4 @@ export default () => {
       </section>
     </main>
   </App >
-}
+})

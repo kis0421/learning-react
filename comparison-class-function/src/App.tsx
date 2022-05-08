@@ -2,13 +2,13 @@ import React from "react";
 
 import App from "./App.style";
 import Header from "./containers/Header";
-import SheduleList from "./containers/SheduleList";
+import ScheduleList from "./containers/ScheduleList";
 
 export default React.memo(() => {
   return <App>
     <Header />
     <main>
-      <SheduleList />
+      <ScheduleList />
     </main>
   </App >
 })

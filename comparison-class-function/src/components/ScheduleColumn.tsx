@@ -1,5 +1,5 @@
 import React from "react";
-import ScheduleColumn from "../styles/ScheduleColumn.style";
+import ScheduleColumn from "@Styles/ScheduleColumn.style";
 
 export default React.memo((props: { title: string }) => {
   return <ScheduleColumn>

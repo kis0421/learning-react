@@ -1,6 +1,6 @@
 import React from "react";
 
-import App from "./styles/App.style";
+import App from "@Styles/App.style";
 import Header from "./containers/Header";
 import ScheduleList from "./containers/ScheduleList";
 

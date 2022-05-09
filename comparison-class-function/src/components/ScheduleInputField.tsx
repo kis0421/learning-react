@@ -1,8 +1,9 @@
 import React from "react";
+import ScheduleInputField from "./ScheduleInputField.style";
 
 export default React.memo(() => {
-  return <nav>
+  return <ScheduleInputField>
     <input type="text" />
     <button> + </button>
-  </nav>
+  </ScheduleInputField>
 })

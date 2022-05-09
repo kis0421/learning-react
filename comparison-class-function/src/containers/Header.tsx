@@ -1,6 +1,6 @@
 import React from "react";
 import SheduleInputField from "../components/ScheduleInputField";
-import Header from "./Header.style";
+import Header from "../styles/Header.style";
 
 
 export default React.memo(() => {

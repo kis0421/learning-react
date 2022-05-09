@@ -1,5 +1,5 @@
 import React from "react";
-import ScheduleInputField from "./ScheduleInputField.style";
+import ScheduleInputField from "../styles/ScheduleInputField.style";
 
 export default React.memo(() => {
   return <ScheduleInputField>

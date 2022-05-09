@@ -1,5 +1,5 @@
 import React from "react";
-import SheduleInputField from "../components/SheduleInputField";
+import SheduleInputField from "../components/ScheduleInputField";
 
 export default React.memo(() => {
   return <>

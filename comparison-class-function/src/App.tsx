@@ -4,12 +4,12 @@ import App from "@Styles/App.style";
 import Header from "./containers/Header";
 import ScheduleList from "./containers/ScheduleList";
 
-interface InterfaceProps {
+interface InterfaceState {
   list: Set<string>
 }
-export default React.memo(class extends React.Component<InterfaceProps> {
+export default React.memo(class extends React.Component<{}, InterfaceState> {
 
-  state: InterfaceProps = {
+  state: InterfaceState = {
     list: new Set(),
   }
 

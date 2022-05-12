@@ -4,22 +4,35 @@ import App from "@Styles/App.style";
 import Header from "./containers/Header";
 import ScheduleList from "./containers/ScheduleList";
 
-export default React.memo(() => {
-  const [state, setState] = useState(new Set("a") as Set<string>);
-  const removeSchedule = useCallback((title: string) => {
-    state.delete(title);
-    setState(new Set(state));
-  }, []);
+interface InterfaceProps {
+  list: Set<string>
+}
+export default React.memo(class extends React.Component<InterfaceProps> {
 
-  const addSchedule = useCallback((title: string) => {
-    state.add(title);
-    setState(new Set(state))
-  }, [])
+  state: InterfaceProps = {
+    list: new Set(),
+  }
 
-  return <App>
-    <Header addSchedule={addSchedule}/>
-    <main>
-      <ScheduleList schedules={state} removeSchedule={removeSchedule}/>
-    </main>
-  </App >
+  addSchedule = (title: string) => {
+    this.state.list.add(title);
+    this.setState({
+      list: new Set(this.state.list)
+    })
+  }
+
+  removeSchedule = (title: string) => {
+    this.state.list.delete(title);
+    this.setState({
+      list: new Set(this.state.list)
+    })
+  }
+
+  render() {
+    return (<App>
+      <Header addSchedule={this.addSchedule} />
+      <main>
+        <ScheduleList schedules={this.state.list} removeSchedule={this.removeSchedule} />
+      </main>
+    </App >)
+  }
 })

@@ -1,9 +1,14 @@
 import React from "react";
 import ScheduleColumn from "@Styles/ScheduleColumn.style";
-
-export default React.memo((props: { title: string, removeSchedule: (title: string) => void }) => {
-  return <ScheduleColumn>
-    <span>{props.title}</span>
-    <button style={{ float: "right" }} onClick={() => props.removeSchedule(props.title)}>X</button>
-  </ScheduleColumn>
+interface InterfaceProps {
+  title: string,
+  removeSchedule: (title: string) => void
+}
+export default React.memo(class extends React.Component<InterfaceProps>{
+  render() {
+    return <ScheduleColumn>
+      <span>{this.props.title}</span>
+      <button style={{ float: "right" }} onClick={() => this.props.removeSchedule(this.props.title)}>X</button>
+    </ScheduleColumn>
+  }
 })

@@ -2,10 +2,14 @@ import React from "react";
 import SheduleInputField from "../components/ScheduleInputField";
 import Header from "@Styles/Header.style";
 
-
-export default React.memo((props: { addSchedule: (title: string) => void }) => {
-  return <>
-    <Header>할 일</Header>
-    <SheduleInputField addSchedule={props.addSchedule} />
-  </>
+interface InterfaceProps {
+  addSchedule: (title: string) => void;
+}
+export default React.memo(class extends React.Component<InterfaceProps>{
+  render() {
+    return <>
+      <Header>할 일</Header>
+      <SheduleInputField addSchedule={this.props.addSchedule} />
+    </>
+  }
 })

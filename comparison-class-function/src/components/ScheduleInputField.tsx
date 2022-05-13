@@ -1,10 +1,17 @@
-import React, { useRef } from "react";
+import React, { createRef } from "react";
 import ScheduleInputField from "@Styles/ScheduleInputField.style";
 
-export default React.memo((props: { addSchedule: (title: string) => void }) => {
-  const ref = useRef(null);
-  return <ScheduleInputField>
-    <input ref={ref} type="text" />
-    <button onClick={() => props.addSchedule(ref.current.value)}> + </button>
-  </ScheduleInputField>
+
+interface InterfaceProps {
+  addSchedule: (title: string) => void;
+}
+export default React.memo(class extends React.Component<InterfaceProps>{
+  ref = createRef<HTMLInputElement>();
+  
+  render() {
+    return <ScheduleInputField>
+      <input ref={this.ref} type="text" />
+      <button onClick={() => this.props.addSchedule(this.ref.current!.value)}> + </button>
+    </ScheduleInputField>
+  }
 })

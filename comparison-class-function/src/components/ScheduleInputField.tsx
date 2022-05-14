@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React, { createRef, useCallback } from "react";
 import ScheduleInputField from "@Styles/ScheduleInputField.style";
 
 
@@ -7,11 +7,11 @@ interface InterfaceProps {
 }
 export default React.memo(class extends React.Component<InterfaceProps>{
   ref = createRef<HTMLInputElement>();
-  
+
   render() {
     return <ScheduleInputField>
       <input ref={this.ref} type="text" />
-      <button onClick={() => this.props.addSchedule(this.ref.current!.value)}> + </button>
+      <button onClick={useCallback(() => this.props.addSchedule(this.ref.current!.value), [])}> + </button>
     </ScheduleInputField>
   }
 })

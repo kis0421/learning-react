@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import ScheduleColumn from "@Styles/ScheduleColumn.style";
 interface InterfaceProps {
   title: string,
@@ -8,7 +8,7 @@ export default React.memo(class extends React.Component<InterfaceProps>{
   render() {
     return <ScheduleColumn>
       <span>{this.props.title}</span>
-      <button style={{ float: "right" }} onClick={() => this.props.removeSchedule(this.props.title)}>X</button>
+      <button style={{ float: "right" }} onClick={useCallback(() => this.props.removeSchedule(this.props.title), [])}>X</button>
     </ScheduleColumn>
   }
 })

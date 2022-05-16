@@ -11,7 +11,7 @@ export default React.memo(class extends React.Component<InterfaceProps>{
   render() {
     return <ScheduleInputField>
       <input ref={this.ref} type="text" />
-      <button onClick={useCallback(() => this.props.addSchedule(this.ref.current!.value), [])}> + </button>
+      <button onClick={() => this.props.addSchedule(this.ref.current!.value)}> + </button>
     </ScheduleInputField>
   }
 })

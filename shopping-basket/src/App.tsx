@@ -3,12 +3,14 @@ import { BasketConetxt, BasketUpdateContext, Provider as BasketProvider } from "
 
 const List = React.memo(() => {
   const basket = useContext(BasketConetxt);
+  console.log("1")
   return <div>
     {basket.map((item) => <div>{item}</div>)}
   </div>
 })
 
 const Controll = React.memo(() => {
+  console.log("2")
   const setBasket = useContext(BasketUpdateContext);
   return <div style={{height:"300px"}}>
     <button onClick={useCallback(() => setBasket(["dd"]), [])}>ㅇㅇ</button>

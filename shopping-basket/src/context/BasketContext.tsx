@@ -1,16 +1,14 @@
-import React, { createContext, useState, ReactNode } from "react";
+import { useState, useCallback } from "react";
+import constate from "constate";
 
-export const BasketConetxt = createContext([]);
-export const BasketUpdateContext = createContext((a: any) => console.log("d"));
-
-export const Provider = (props: { children: ReactNode }) => {
-  const [basket, setBasket] = useState([]);
-
-  return (
-    <BasketConetxt.Provider value={basket}>
-      <BasketUpdateContext.Provider value={setBasket as any}>
-        {props.children}
-      </BasketUpdateContext.Provider>
-    </BasketConetxt.Provider>
-  )
+function useBasketConstate({ initialCount = [] }) {
+  const [basket, setBasket] = useState<any[]>(initialCount);
+  const updateBasket = useCallback((newBasket: any[]) => setBasket(newBasket), []);
+  return { basket, updateBasket };
 }
+
+export const [BasketProvider, useBasket, useBasketUpdate] = constate(
+  useBasketConstate,
+  value => value.basket,
+  value => value.updateBasket
+);

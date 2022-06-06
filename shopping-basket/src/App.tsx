@@ -1,19 +1,20 @@
-import React, { useCallback, useContext } from "react"
-import { BasketConetxt, BasketUpdateContext, Provider as BasketProvider } from "./context/BasketContext"
+import React, { useCallback } from "react"
+import { BasketProvider, useBasket, useBasketUpdate } from "./context/BasketContext"
 
-const List = React.memo(() => {
-  const basket = useContext(BasketConetxt);
-  console.log("1")
+const List = () => {
+  const basket = useBasket();
+  // console.log("List Component")
   return <div>
-    {basket.map((item) => <div>{item}</div>)}
+    {basket.map((item, index) => <div key={index}>{item}</div>)}
   </div>
-})
+}
 
 const Controll = React.memo(() => {
-  console.log("2")
-  const setBasket = useContext(BasketUpdateContext);
-  return <div style={{height:"300px"}}>
-    <button onClick={useCallback(() => setBasket(["dd"]), [])}>ㅇㅇ</button>
+  // console.log("Controll Component")
+  const basketUpdate = useBasketUpdate();
+  const basket = useBasket();
+  return <div style={{ height: "300px" }}>
+    <button onClick={useCallback(() => basketUpdate([...basket, 19]), [])}>ㅇㅇ</button>
   </div>
 })
 

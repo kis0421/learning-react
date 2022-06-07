@@ -1,9 +1,13 @@
 import { useState, useCallback } from "react";
 import constate from "constate";
 
-function useBasketConstate({ initialCount = [] }) {
-  const [basket, setBasket] = useState<any[]>(initialCount);
-  const updateBasket = useCallback((newBasket: any[]) => setBasket(newBasket), []);
+function useBasketConstate() {
+  const [basket, setBasket] = useState<any[]>([]);
+  const updateBasket = useCallback((newBasket: any) => {
+    console.log(new Date().toString())
+    setBasket([...basket, new Date().toString()]);
+  }, [basket]);
+
   return { basket, updateBasket };
 }
 

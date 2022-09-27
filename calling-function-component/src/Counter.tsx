@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-interface Props {
+export interface OnclickProps {
   onClick: () => void
 }
-export default (props: Props) => {
+export default (props: OnclickProps) => {
   const [count, setCount] = useState(0);
   const incrementCounter = () => {
     setCount(() => count + 1);

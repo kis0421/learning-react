@@ -11,7 +11,7 @@ const App = () => {
       <Counter {...props} />
     </div>)
   }
-  
+
   return (
     <div style={{ textAlign: "center" }}>
       <div>
@@ -19,7 +19,8 @@ const App = () => {
       </div>
       <div className="CountersContainer">
         <Counter onClick={incrementTotal} />
-        <DescriptionWidthCounter onClick={incrementTotal} />
+        {/* <DescriptionWidthCounter onClick={incrementTotal} />*/}
+        {DescriptionWidthCounter({ onClick: incrementTotal })}
         <Counter onClick={incrementTotal} />
       </div>
     </div>

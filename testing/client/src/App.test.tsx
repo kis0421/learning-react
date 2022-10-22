@@ -1,16 +1,12 @@
 
+import '@testing-library/jest-dom';
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen ,} from "@testing-library/react";
 
 import App from "./App";
 
-// it("aa", () => {
-//   const utils = render(<App name="coco" />);
-//   expect(utils.container).toMatchSnapshot();
-// })
-
-
 it("renders with or without a name", () => {
-  render(<App name="coco" />);
-  // utils.getByText("hello,")
+  const userName = "coco";
+  render(<App name={userName} />);
+  expect(screen.getByText(`hello, ${userName}`)).toBeInTheDocument();
 })

@@ -1,4 +1,6 @@
-import React from "react"
+import React from "react";
+import Main from "./pages/Main";
+import Footer from "./components/Footer";
 
 interface Props {
   name: string
@@ -6,6 +8,9 @@ interface Props {
 
 export default (props: Props) => {
   return (
-    <h1>hello, {props.name}</h1>
+    <>
+      <Main name={props.name} />
+      <Footer />
+    </>
   )
 }

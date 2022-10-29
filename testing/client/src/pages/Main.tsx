@@ -1,4 +1,6 @@
-import React, { useState, useRef, useCallback } from "react";
+import axios from "axios";
+import React, { useState, useRef, useCallback, useLayoutEffect } from "react";
+import { useQuery } from "react-query";
 import styled from "styled-components";
 
 interface Props {
@@ -23,6 +25,16 @@ export default (props: Props) => {
       setUsers([...users, inputRef.current.value]);
     }
   }, [users]);
+
+  const { data } = useQuery(["users"], async () => {
+    // const { data } = await axios.get("http://naver.com");
+    // console.log(data);
+    // return data;
+  });
+
+  useLayoutEffect(() => {
+    console.log("hi");
+  }, []);
 
   return (
     <Main>

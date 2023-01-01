@@ -1,4 +1,5 @@
-import React from 'react';
+import { useRef } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const SearchBox = styled.header`
@@ -24,13 +25,28 @@ const SearchBox = styled.header`
     border: none;
     background: none;
   }
-`
+`;
 
 const SearchBoxConatainer = () => {
+  console.log(process.env);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const search = () => {
+    if (inputRef.current?.value) {
+      axios.get(`http://dapi.kakao.com/v2/search/image?query=${inputRef.current.value}`, {
+        headers: {
+          Authorization: `KakaoAK ${process.env.REACT_APP_REST_API_KEY}`
+        }
+      })
+        .then((res) => console.log(res))
+    }
+  }
+
   return (
     <SearchBox>
-      <input type='text' />
-      <button>검색</button>
+      <input
+        type='text'
+        ref={inputRef} />
+      <button onClick={search}>검색</button>
     </SearchBox>
   )
 }

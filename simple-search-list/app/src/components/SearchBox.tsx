@@ -13,6 +13,7 @@ const SearchBox = styled.header`
     width: 100%;
     border: none;
     font-size: 14px;
+    padding: 0 8px;
     &:focus{
       outline: none;
     }
@@ -35,12 +36,18 @@ const SearchBoxConatainer = (props: Props) => {
   const search = () => {
     props.onChange(inputRef.current?.value || '')
   }
-
+  const onKeyDownHandle = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      search();
+    }
+  }
   return (
     <SearchBox>
       <input
         type='text'
-        ref={inputRef} />
+        ref={inputRef}
+        onKeyDown={onKeyDownHandle}
+      />
       <button onClick={search}>검색</button>
     </SearchBox>
   )

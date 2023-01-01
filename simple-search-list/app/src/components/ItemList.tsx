@@ -20,10 +20,15 @@ const ItemListContainer = styled.section`
     > div {
       padding: 0 2px;
       background-clip: padding-box;
-      > div{
-        background: grey;
-        margin-bottom: 30px;
-       }
+      > div {
+        overflow: hidden;
+        > img {
+          transition: scale .5s;
+          &:hover {
+            scale: 1.1
+          }
+        }
+      }
     }
   }
 `
@@ -67,14 +72,17 @@ const ItemList = (props: Props) => {
     <ItemListContainer>
       <Masonry
         breakpointCols={7}
-        className="masonry-grid"
-        columnClassName="my-masonry-grid_column">
-        {data?.slice(0, 30).map((item) => {
-          return (<img
-            alt={item.display_sitename}
-            key={item.thumbnail_url}
-            src={item.image_url}
-            width='100%' />)
+        className="masonry-grid">
+        {data?.map((item) => {
+          const onErrorSrc = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png';
+          return (<div key={item.image_url}>
+            <img
+              alt={item.display_sitename}
+              key={item.thumbnail_url}
+              src={item.image_url}
+              onError={(e) => e.currentTarget.src = onErrorSrc}
+              width='100%' />
+          </div>)
         })}
       </Masonry>
     </ItemListContainer >

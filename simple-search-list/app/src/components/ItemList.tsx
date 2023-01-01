@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const ItemListContainer = styled.section`

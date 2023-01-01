@@ -2,14 +2,30 @@ import { useEffect } from 'react'
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import Masonry from 'react-masonry-css'
+
 const ItemListContainer = styled.section`
   display: flex;
   background: white;
   margin-top: 24px;
   width: 100%;
   height: 100%;
-  flex-direction: column;
   overflow-y: auto;
+  > .masonry-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: -30px;
+    width: auto;
+    > div {
+      padding: 0 2px;
+      background-clip: padding-box;
+      > div{
+        background: grey;
+        margin-bottom: 30px;
+       }
+    }
+  }
 `
 interface Props {
   keyword: string
@@ -43,22 +59,25 @@ const ItemList = (props: Props) => {
     refetch()
   }, [props.keyword, refetch])
 
-  console.log(data, isLoading)
   if (data === undefined && isLoading) {
     return null;
   }
+
   return (
     <ItemListContainer>
-      {data?.slice(0, 10).map((item) => {
-        return (<img
-          alt={item.display_sitename}
-          key={item.thumbnail_url}
-          src={item.thumbnail_url}
-          width={item.width}
-          height={item.height}
-        />)
-      })}
-    </ItemListContainer>
+      <Masonry
+        breakpointCols={7}
+        className="masonry-grid"
+        columnClassName="my-masonry-grid_column">
+        {data?.slice(0, 30).map((item) => {
+          return (<img
+            alt={item.display_sitename}
+            key={item.thumbnail_url}
+            src={item.image_url}
+            width='100%' />)
+        })}
+      </Masonry>
+    </ItemListContainer >
   )
 }
 

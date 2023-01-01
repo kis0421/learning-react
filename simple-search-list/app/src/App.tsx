@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import SearchBox from './components/SearchBox';
 import ItemList from './components/ItemList';
@@ -11,12 +12,22 @@ const AppContainer = styled.main`
   width: 100%;
   height: 100vh;
 `
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+})
+
 const App = () => {
   return (
-    <AppContainer>
-      <SearchBox />
-      <ItemList />
-    </AppContainer>
+    <QueryClientProvider client={queryClient}>
+      <AppContainer>
+        <SearchBox />
+        <ItemList />
+      </AppContainer>
+    </QueryClientProvider>
   );
 }
 

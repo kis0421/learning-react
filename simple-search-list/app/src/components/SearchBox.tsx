@@ -5,9 +5,10 @@ const SearchBox = styled.header`
   display: flex;
   align-items: center;
   background-color: white;
-  width: 350px;
+  width: 30%;
   height: 35px;
   border-radius: 4px;
+  margin-top: 12px;
   > input {
     width: 100%;
     border: none;

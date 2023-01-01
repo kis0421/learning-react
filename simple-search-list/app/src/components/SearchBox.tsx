@@ -1,11 +1,13 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
 
+// TODO: fix layout
 const SearchBox = styled.header`
   display: flex;
   align-items: center;
   background-color: white;
   width: 30%;
+  min-width: 350px;
   height: 35px;
   border-radius: 4px;
   margin-top: 12px;

@@ -11,6 +11,8 @@ const ItemListContainer = styled.section`
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  justify-content: center;
+  align-items: center;
   > .masonry-grid {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -64,27 +66,31 @@ const ItemList = (props: Props) => {
     refetch()
   }, [props.keyword, refetch])
 
-  if (data === undefined && isLoading) {
-    return null;
-  }
+  console.log(data)
+
 
   return (
     <ItemListContainer>
-      <Masonry
-        breakpointCols={7}
-        className="masonry-grid">
-        {data?.map((item) => {
-          const onErrorSrc = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png';
-          return (<div key={item.image_url}>
-            <img
-              alt={item.display_sitename}
-              key={item.thumbnail_url}
-              src={item.image_url}
-              onError={(e) => e.currentTarget.src = onErrorSrc}
-              width='100%' />
-          </div>)
-        })}
-      </Masonry>
+      {data === undefined
+        ? <span>검색을 해주세요.</span>
+        : data.length === 0
+          ? <span>검색 결과가 없습니다.</span>
+          : <Masonry
+            breakpointCols={7}
+            className="masonry-grid">
+            {data?.map((item) => {
+              const onErrorSrc = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png';
+              return (<div key={item.image_url}>
+                <img
+                  alt={item.display_sitename}
+                  key={item.thumbnail_url}
+                  src={item.image_url}
+                  onError={(e) => e.currentTarget.src = onErrorSrc}
+                  width='100%' />
+              </div>)
+            })}
+          </Masonry>
+      }
     </ItemListContainer >
   )
 }

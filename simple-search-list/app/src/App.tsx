@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -21,11 +22,13 @@ const queryClient = new QueryClient({
 })
 
 const App = () => {
+  const [value, setValue] = useState('');
+
   return (
     <QueryClientProvider client={queryClient}>
       <AppContainer>
-        <SearchBox />
-        <ItemList />
+        <SearchBox onChange={setValue} />
+        <ItemList keyword={value} />
       </AppContainer>
     </QueryClientProvider>
   );

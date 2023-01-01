@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 
 const SearchBox = styled.header`
@@ -27,18 +26,14 @@ const SearchBox = styled.header`
   }
 `;
 
-const SearchBoxConatainer = () => {
-  console.log(process.env);
+interface Props {
+  onChange: (value: string) => void
+}
+
+const SearchBoxConatainer = (props: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const search = () => {
-    if (inputRef.current?.value) {
-      axios.get(`http://dapi.kakao.com/v2/search/image?query=${inputRef.current.value}`, {
-        headers: {
-          Authorization: `KakaoAK ${process.env.REACT_APP_REST_API_KEY}`
-        }
-      })
-        .then((res) => console.log(res))
-    }
+    props.onChange(inputRef.current?.value || '')
   }
 
   return (

@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -20,5 +21,12 @@ module.exports = {
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    fallback: {
+      http: false,
+      https: false,
+      stream: false,
+      buffer: false,
+      zlib: false,
+    },
   },
 };

@@ -6,10 +6,10 @@ import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  // fetch('', { cache: 'no-cache' })
   return (
     <main className={styles.main}>
       <Link href='test'> 12333</Link>
-      dddd
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
